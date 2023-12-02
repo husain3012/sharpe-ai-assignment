@@ -3,7 +3,7 @@ import TransactionForm from "components/TransactionForm";
 const Transaction = () => {
   return (
     <div className="flex flex-col m-auto">
-      <div >
+      <div>
         <TransactionForm />
       </div>
     </div>

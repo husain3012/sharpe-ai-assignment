@@ -1,4 +1,3 @@
-
 import { IPost } from "types/common";
 
 const PostsTable = ({ posts }: { posts: IPost[] }) => {

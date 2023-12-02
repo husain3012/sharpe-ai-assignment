@@ -6,8 +6,6 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { IPost } from "types/common";
 
-
-
 interface IPostState {
   loading: boolean;
   posts: IPost[];
@@ -18,7 +16,6 @@ const Data = () => {
     loading: false,
     posts: [],
   });
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,7 +41,7 @@ const Data = () => {
     fetchData();
   }, []);
 
-  const userPosts = posts.posts.filter(post=>post.userId==USER.id)
+  const userPosts = posts.posts.filter((post) => post.userId == USER.id);
 
   return (
     <div className="flex flex-col ">
@@ -58,11 +55,10 @@ const Data = () => {
             </div>
           ) : (
             <div className="w-full flex flex-col gap-4">
-             
               <PostsTable posts={userPosts} />
 
               <div className="divider">Charts</div>
-            <PostsChart allPosts={posts.posts}  />
+              <PostsChart allPosts={posts.posts} />
             </div>
           )}
         </div>

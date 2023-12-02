@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import validator from "validator";
-import web3 from 'web3'
+
 
 interface IFormValues<T> {
   value: T | null;
@@ -74,12 +74,14 @@ const TransactionForm = () => {
       value: "",
       error: null,
     });
-    const amountInEth = web3.utils.fromWei(transactionAmount.value.toString(), 'ether')
-    
-    const formattedWalletAddress = walletAddress.value.slice(0,3) + "..." + walletAddress.value.slice(-4)
+    const amountInEth = Number(transactionAmount.value / 1e18).toFixed(16)
+
+    const formattedWalletAddress =
+      walletAddress.value.slice(0, 3) + "..." + walletAddress.value.slice(-4);
 
     toast.success(
-      `Transaction of ${amountInEth} ETH to ${formattedWalletAddress} is successful!`, {duration:7000}
+      `Transaction of ${amountInEth} ETH to ${formattedWalletAddress} is successful!`,
+      { duration: 7000 }
     );
     console.log("Submit");
   };
@@ -113,7 +115,6 @@ const TransactionForm = () => {
             <div className="label">
               <span className="label-text">Amount</span>
               <span className="label-text">in Wei</span>
-
             </div>
             <input
               type="number"
